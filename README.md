@@ -1,3 +1,5 @@
+![a gif of generated mnist digits](https://github.com/nathan-yan/mnist-neural-automata/mnist.gif)
+
 # Growing MNIST digits with differential cellular automata.
 This is based heavily on Mordvintsev et al. [https://distill.pub/2020/growing-ca/]. To generate novel digits you can run `automata_test.py`, which will use the pretrained models inside the `./models` directory.
 
