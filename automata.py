@@ -10,6 +10,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
+import os
+if not os.path.exists('models_da'):
+    os.makedirs('models_da')
+
 kernel_sobel_x = torch.zeros([51, 51, 3, 3])
 kernel_sobel_y = torch.zeros([51, 51, 3, 3])
 
@@ -140,11 +144,9 @@ def main():
     print(sum(p.numel() for p in enc.parameters()))
     
 
-    ds = torch.load("./mnist_cluttered/MNIST/processed/training.pt")
+    ds = torch.load("./MNIST/processed/training.pt")
     dt = TensorDataset(ds[0], ds[1])
     dl = DataLoader(dt, batch_size = bs, shuffle = True, drop_last = True)
-
-    target = torch.tensor(plt.imread("./lizard.png")).transpose(0, 2).view(1, 4, 30, 30).to(device) # 30 x 30 x 4
 
     for epoch in range (100):
         iteration = 0
